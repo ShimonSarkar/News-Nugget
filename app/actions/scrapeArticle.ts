@@ -39,16 +39,15 @@ async function sendPromptToChatGPT(prompt: string) {
 export async function scrapeArticle({ url }: { url: string }): Promise<string> {
   let browser;
   try {
-    browser = await puppeteer.launch({ headless: true });
+    browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      headless: true,
+    });
     const page = await browser.newPage();
 
-    // Navigate to the initial URL and wait until the network is idle
     await page.goto(url, { waitUntil: "networkidle2" });
-
-    // Wait for the necessary elements to load
     await page.waitForSelector("body");
 
-    // Extract the content from the final URL
     const content = await page.evaluate(() => {
       const selectors = [
         "p",
@@ -71,10 +70,7 @@ export async function scrapeArticle({ url }: { url: string }): Promise<string> {
         });
       });
 
-      // Normalize the text content
-      return textContent
-        .replace(/\s\s+/g, " ") // Replace multiple spaces with a single space
-        .trim(); // Trim leading and trailing whitespace
+      return textContent.replace(/\s\s+/g, " ").trim();
     });
 
     await browser.close();
