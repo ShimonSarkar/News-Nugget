@@ -1,3 +1,5 @@
+> ⚠️ **Note**: There is an issue with the Vercel environment that prevents the Puppeteer API from running correctly. This may cause scraping functionalities to fail in the deployed application. I am actively looking into this and will provide updates as soon as a solution is found.
+
 # News Nugget
 
 ## Overview
