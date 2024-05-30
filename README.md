@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# News Nugget
 
-## Getting Started
+## Overview
 
-First, run the development server:
+**News Nugget** is a modern web application designed to scrape the web for the latest news articles and provide users with the ability to summarize them. This project leverages powerful technologies such as Next.js, axios, cheerio, and puppeteer to deliver a seamless and efficient news aggregation and summarization tool.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Next.js
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Utilizes server-side rendering and static site generation for high performance and SEO-friendly pages.
+- Provides a robust framework for building a scalable and maintainable web application.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### axios
 
-## Learn More
+- Handles HTTP requests to fetch data from various news sources.
+- Simplifies the process of making asynchronous requests to gather news articles.
 
-To learn more about Next.js, take a look at the following resources:
+### cheerio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Parses and manipulates HTML to extract necessary data from web pages.
+- Mimics jQuery's functionality to easily select and retrieve elements from the HTML.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### puppeteer
 
-## Deploy on Vercel
+- Automates browsing tasks to handle more complex scraping scenarios.
+- Provides headless browsing capabilities to scrape dynamic content from web pages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Focus
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is an exercise in modern web development, focusing on:
+
+### Client vs. Server Components
+
+- Understanding the effective use of client and server components within Next.js to build a dynamic and responsive application.
+
+### Web Scraping
+
+- Implementing robust web scraping techniques with cheerio and puppeteer to gather the latest news articles from multiple sources.
+
+### Data Fetching and State Management
+
+- Managing state and fetching data efficiently in a React application, ensuring smooth user interactions and data updates.
+
+### UI Design and User Experience
+
+- Utilizing Tailwind CSS (or similar styling framework) to create a visually appealing and user-friendly interface, with a focus on responsiveness and customization.
+
+### Article Summarization
+
+- Leveraging AI or other summarization techniques to provide concise and accurate summaries of news articles.
+
+[Visit News Nugget](https://news-nugget-one.vercel.app/)
+
+![News Nugget](newsnuggetpreview.png)
