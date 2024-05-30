@@ -87,8 +87,8 @@ export async function scrapeAndSummarizeArticle(url: string): Promise<string> {
   try {
     const content = await scrapeArticle({ url });
     const summaryPrompt = `Please provide a robust and comprehensive summary of the following article content, phrased as it would be in the New York Times. Retain all key parts and provide context if possible. Additionally, provide a suitable title for the article. The format should be *Title:* (title content) and *Article:* (article content). Indicate paragraph breaks using ***:\n\n${content}`;
-    // const summary = await sendPromptToChatGPT(summaryPrompt);
-    return summaryPrompt;
+    const summary = await sendPromptToChatGPT(summaryPrompt);
+    return summary;
   } catch (error: any) {
     console.error("Error scraping and summarizing article:", error);
     throw new Error(`Failed to scrape and summarize article: ${error.message}`);
