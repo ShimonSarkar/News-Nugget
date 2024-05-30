@@ -3,10 +3,8 @@
 import puppeteer from "puppeteer";
 import axios from "axios";
 
-// Replace with your actual OpenAI API key
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-// Function to send a prompt to the ChatGPT API
 async function sendPromptToChatGPT(prompt: string) {
   console.log(prompt);
   const apiUrl = "https://api.openai.com/v1/chat/completions";
@@ -17,10 +15,10 @@ async function sendPromptToChatGPT(prompt: string) {
   };
 
   const data = {
-    model: "gpt-3.5-turbo", // Replace with the model you are using
+    model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.7, // Adjust the temperature to control the creativity
-    max_tokens: 1000, // Adjust max tokens based on your needs
+    temperature: 0.7,
+    max_tokens: 1000,
   };
 
   try {
@@ -35,7 +33,6 @@ async function sendPromptToChatGPT(prompt: string) {
   }
 }
 
-// Function to scrape the article content
 export async function scrapeArticle({ url }: { url: string }): Promise<string> {
   let browser;
   try {
@@ -45,8 +42,12 @@ export async function scrapeArticle({ url }: { url: string }): Promise<string> {
     });
     const page = await browser.newPage();
 
+    console.log(`Navigating to URL: ${url}`);
     await page.goto(url, { waitUntil: "networkidle2" });
+    console.log(`Page loaded: ${url}`);
+
     await page.waitForSelector("body");
+    console.log("Body selector found");
 
     const content = await page.evaluate(() => {
       const selectors = [
@@ -65,7 +66,7 @@ export async function scrapeArticle({ url }: { url: string }): Promise<string> {
       let textContent = "";
       selectors.forEach((selector) => {
         document.querySelectorAll(selector).forEach((element) => {
-          // @ts-ignore
+          // @ts-ignores
           textContent += element.innerText + "\n";
         });
       });
@@ -77,11 +78,11 @@ export async function scrapeArticle({ url }: { url: string }): Promise<string> {
     return content;
   } catch (error) {
     if (browser) await browser.close();
+    console.error("Error scraping article:", error);
     throw new Error("Failed to scrape article");
   }
 }
 
-// Function to scrape an article and get a summary from ChatGPT
 export async function scrapeAndSummarizeArticle(url: string): Promise<string> {
   try {
     const content = await scrapeArticle({ url });
@@ -89,6 +90,7 @@ export async function scrapeAndSummarizeArticle(url: string): Promise<string> {
     const summary = await sendPromptToChatGPT(summaryPrompt);
     return summary;
   } catch (error: any) {
+    console.error("Error scraping and summarizing article:", error);
     throw new Error(`Failed to scrape and summarize article: ${error.message}`);
   }
 }
