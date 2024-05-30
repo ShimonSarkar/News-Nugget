@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { scrapeAndSummarizeArticle } from "@/app/actions/scrapeArticle";
+import {
+  scrapeArticle,
+  scrapeAndSummarizeArticle,
+} from "@/app/actions/scrapeArticle";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
