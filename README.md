@@ -2,7 +2,7 @@
 
 ## Overview
 
-**News Nugget** is a modern web application designed to scrape the web for the latest news articles and provide users with the ability to summarize them. This project leverages powerful technologies such as Next.js, axios, cheerio, and puppeteer to deliver a seamless and efficient news aggregation and summarization tool.
+**News Nugget** is a modern web application designed to scrape the web for the latest news articles and provide users with the ability to summarize them. This project leverages powerful technologies such as Next.js, axios, cheerio, puppeteer, and the ChatGPT API to deliver a seamless and efficient news aggregation and summarization tool.
 
 ## Key Features
 
@@ -26,6 +26,11 @@
 - Automates browsing tasks to handle more complex scraping scenarios.
 - Provides headless browsing capabilities to scrape dynamic content from web pages.
 
+### ChatGPT API
+
+- Leverages the ChatGPT API to summarize scraped news articles, providing concise and accurate summaries.
+- Enhances the user experience by delivering well-crafted summaries that retain the key points of the original articles.
+
 ## Project Focus
 
 This project is an exercise in modern web development, focusing on:
@@ -48,7 +53,8 @@ This project is an exercise in modern web development, focusing on:
 
 ### Article Summarization
 
-- Leveraging AI or other summarization techniques to provide concise and accurate summaries of news articles.
+- Leveraging the ChatGPT API to provide concise and accurate summaries of news articles.
+- Ensuring the summaries retain all key parts and provide context for a comprehensive understanding.
 
 [Visit News Nugget](https://news-nugget-one.vercel.app/)
 
